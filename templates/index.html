@@ -1,1 +1,34 @@
-{name}
+{% extends 'partial/layout.html' %}
+      {% block header %}
+      {% include "partial/header.html" %}
+      {% endblock header %}
+
+      {% block nav %}
+      {% include "partial/nav.html" %}
+      {% endblock nav %}
+
+    {% block editor %}
+    {% include "partial/editor.html" %}
+    {% endblock editor %}
+   
+     {% block news %}
+     {% include "partial/news.html" %}
+     {% endblock news %}
+
+     {% block categorynews %}
+     {% include "partial/categorynews.html" %}
+     {% endblock categorynews %}
+    
+      {% block recentnews %}
+      {% include "partial/recentnews.html" %}
+      {% endblock recentnews %}
+      
+  
+    {% block footer %}
+    {% include "partial/footer.html" %}
+    {% endblock footer %}
+
+ {% block script %}
+ {% include "partial/script.html" %}
+ {% endblock script %}
+
