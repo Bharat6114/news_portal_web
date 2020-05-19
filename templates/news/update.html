@@ -1,7 +1,4 @@
-
 {% extends 'partial/layout.html' %}
-
-{% load crispy_forms_tags %}
       {% block header %}
       {% include "partial/header.html" %}
       {% endblock header %}
@@ -12,16 +9,17 @@
 
     
    
-  {% block news %}
-  <form method="post">
-  {% csrf_token %} 
-  <p>Login <p>
- 
-  {{ form|crispy  }}
-  <button type="submit">Login</button>
+     {% block news %}
+   <p>Login</p>
+<p></p>
+<form method="post" enctype="multipart/form-data">
+  {% csrf_token %} {{ form|crispy }}
+  <button type="submit">Update</button>
 </form>
      {% endblock news %}
 
+     
+    
       
   
     {% block footer %}

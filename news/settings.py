@@ -37,11 +37,12 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
+    #Third party
+    "crispy_forms",
     #custom app
     "news_app",
     "account",
-    #Third party
-    "crispy_forms",
+    
 ]
 
 MIDDLEWARE = [
@@ -141,9 +142,10 @@ EMAIL_HOST_USER = 'cf716b7a14f24a'
 EMAIL_HOST_PASSWORD = '1f12613418580a'
 EMAIL_PORT = '2525'
 
-AUTH_USER_MODEL = "account.User"
 CRISPY_TEMPLATE_PACK ="bootstrap4"
-LOGIN_REDIRECT_URL = "/"
 
+
+LOGIN_REDIRECT_URL = "/"
+AUTH_USER_MODEL = "account.User"
 
 
