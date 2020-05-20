@@ -58,6 +58,7 @@ class NewsTemplateView(TemplateView):
 class NewsDetail(DetailView):
     model = News
     template_name = "news/single_news.html"
+
     context_object_name = "detail_news"
     def get_context_data(self, **kwargs):
         context = super().get_context_data(**kwargs)
