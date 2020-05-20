@@ -12,6 +12,6 @@ black = "==19.10b0"
 pillow = "==7.1.2"
 django-crispy-forms= "==1.8.1"
 django-six= "==1.0.4"
-
+python-dotenv = "==0.10.3"
 [requires]
 python_version = "3.7"
