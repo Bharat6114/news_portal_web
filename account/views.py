@@ -65,4 +65,3 @@ def activate(request, uidb64, token):
         user.is_active = True
         return render(request, "account/activation_success.html")
     return render(request, "account/activation_fail.html")
-    
