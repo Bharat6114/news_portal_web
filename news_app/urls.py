@@ -9,4 +9,4 @@ urlpatterns = [
     path("<category_id>/", views.CategoryNewsView.as_view(), name="category_news"),
     path("<pk>/<slug>/", views.NewsDetail.as_view(), name="single_news"),
     path("<pk>/<slug>/feedback/", views.news_feedback, name="feedback_news"),
-]
+ ]

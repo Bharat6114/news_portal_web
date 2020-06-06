@@ -17,6 +17,11 @@ from django.contrib import admin
 from django.urls import path,include
 from django.conf import settings
 from django.conf.urls.static import static
+from rest_framework_simplejwt.views import (
+    TokenObtainPairView,
+    TokenRefreshView,
+)
+
 from news_app import views
 
 urlpatterns = [
@@ -25,6 +30,12 @@ urlpatterns = [
     path("", views.NewsTemplateView.as_view(), name="home"),
     path("news/", include("news_app.urls")),
     path("account/", include("account.urls")),
+    #simple jwt
+    path('api/token/', TokenObtainPairView.as_view(), name='token_obtain_pair'),
+    path('api/refresh/', TokenRefreshView.as_view(), name='token_refresh'),
+    #apis
+    path('api/account/',include("account.apis.api_urls")),
+   
 
 
 ]+ static(settings.STATIC_URL, document_root=settings.STATIC_ROOT)
