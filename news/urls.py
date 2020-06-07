@@ -23,6 +23,9 @@ from rest_framework_simplejwt.views import (
 )
 
 from news_app import views
+from rest_framework_swagger.views import get_swagger_view
+
+schema_view = get_swagger_view(title="News Portal API")
 
 urlpatterns = [
     path('admin/', admin.site.urls),
@@ -34,7 +37,10 @@ urlpatterns = [
     path('api/token/', TokenObtainPairView.as_view(), name='token_obtain_pair'),
     path('api/refresh/', TokenRefreshView.as_view(), name='token_refresh'),
     #apis
+    path("docs/", schema_view),
+    path("api-auth/", include("rest_framework.urls")),
     path('api/account/',include("account.apis.api_urls")),
+    path('api/news/',include("news_app.apis.api_urls")),
    
 
 
