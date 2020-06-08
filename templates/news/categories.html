@@ -16,7 +16,9 @@
               <span class="caption d-block small">Categories</span>
               <h2>{{ category.title }}</h2>
             </div>
-            {% for news in category_news_list %}
+         {% for news in page_obj %}
+          
+
             <div class="post-entry-2 d-flex">
               <div class="thumbnail order-md-2" style="background-image: url('{{ news.cover_image.url }}')"></div>
               <div class="contents order-md-1 pl-0">
@@ -70,7 +72,7 @@
                         </div>
                     </div>
                 {% endif %}
-            {% endfor %}
+            
             
 
             
@@ -80,6 +82,27 @@
             </p>
           </div>
         </div>
+      {% endfor %}
+
+    
+    
+    <div class="pagination">
+    <span class="step-links">
+        {% if page_obj.has_previous %}
+            <a href="?page=1">&laquo; first</a>
+            <a href="?page={{ page_obj.previous_page_number }}">previous</a>
+        {% endif %}
+
+        <span class="current">
+            Page {{ page_obj.number }} of {{ page_obj.paginator.num_pages }}.
+        </span>
+
+        {% if page_obj.has_next %}
+            <a href="?page={{ page_obj.next_page_number }}">next</a>
+            <a href="?page={{ page_obj.paginator.num_pages }}">last &raquo;</a>
+        {% endif %}
+    </span>
+</div>
      {% endblock news %}
   
     {% block footer %}
