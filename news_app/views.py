@@ -3,6 +3,7 @@ from django.views import View
 from django.contrib.auth.mixins import LoginRequiredMixin
 from django.urls import reverse_lazy
 from django.utils.text import slugify
+from django.core.paginator import Paginator
 from django.contrib.auth.decorators import login_required
 from django.views.decorators.http import require_http_methods
 from django.views.generic import (
@@ -23,8 +24,12 @@ class CategoryNewsView(View):
         # category = Category.objects.get(pk=category_id)
         category = get_object_or_404(Category, pk=category_id)
         category_news_list = News.objects.filter(category=category)
+        paginator = Paginator(category_news_list,2) # Show 25 contacts per page.
+
+        page_number = request.GET.get('page')
+        page_obj = paginator.get_page(page_number)
         return render(
-            request, template_name, {"category_news_list": category_news_list, "category": category}
+            request, template_name, {"category_news_list": category_news_list, "category": category,"page_obj": page_obj}
         )
 
 
