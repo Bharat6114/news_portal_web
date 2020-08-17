@@ -14,7 +14,7 @@ from django.views.generic import (
     ListView,
     DetailView,
 )
-from news_app.models import Category, News,Comment
+from news_app.models import Category, News,Comment,Images
 from news_app.forms import NewsCreateForm
 
 # Create your views here.
@@ -24,7 +24,7 @@ class CategoryNewsView(View):
         # category = Category.objects.get(pk=category_id)
         category = get_object_or_404(Category, pk=category_id)
         category_news_list = News.objects.filter(category=category)
-        paginator = Paginator(category_news_list,2) # Show 25 contacts per page.
+        paginator = Paginator(category_news_list,4) # Show 25 contacts per page.
 
         page_number = request.GET.get('page')
         page_obj = paginator.get_page(page_number)
@@ -111,6 +111,10 @@ class NewsDeleteView(LoginRequiredMixin, DeleteView):
 
     def get(self, request, *args, **kwargs):
         return self.post(self, request, *args, **kwargs)
+
+def list(request):
+  images = Images.objects.all()
+  return render(request, "partial/editor.html", {'images': images})
 
 
 @login_required
