@@ -20,13 +20,33 @@
   {{ form|crispy  }}
   <button type="submit">Login</button>
 </form>
-     {% endblock news %}
+
+
+<div class="row">
+     
+     <div class="col-md-8 mx-auto social-container my-2 order-md-1">
+     <h2 >Login with</h2><hr>
+         <button class="btn btn-danger  mb-2">
+             <a href="{% url 'social:begin' 'instagram' %}"> Instagram</a>
+         </button>
+         <button class="btn btn-primary mb-2">
+             <a href={% url 'social:begin' 'facebook' %}"> Facebook
+             </a>
+         </button>
+         <button class="btn btn-info mb-2">
+             <a href="{% url 'social:begin' 'linkedin-oauth2' %}"> LinkedIn</a>
+         </button>
+     </div>
+ </div>
+ </div>
+{% endblock news %}
+
 
       
   
-    {% block footer %}
-    {% include "partial/footer.html" %}
-    {% endblock footer %}
+{% block footer %}
+{% include "partial/footer.html" %}
+{% endblock footer %}
 
  {% block script %}
  {% include "partial/script.html" %}

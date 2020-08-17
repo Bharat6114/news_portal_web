@@ -43,6 +43,7 @@ INSTALLED_APPS = [
     #custom app
     "news_app",
     "account",
+    "social_app",
     
 ]
 
@@ -54,6 +55,15 @@ MIDDLEWARE = [
     'django.contrib.auth.middleware.AuthenticationMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
+]
+
+
+#add this
+AUTHENTICATION_BACKENDS = [
+    'social_core.backends.linkedin.LinkedinOAuth2',
+    'social_core.backends.instagram.InstagramOAuth2',
+    'social_core.backends.facebook.FacebookOAuth2',
+    'django.contrib.auth.backends.ModelBackend',
 ]
 
 ROOT_URLCONF = 'news.urls'
@@ -71,11 +81,44 @@ TEMPLATES = [
                 'django.contrib.auth.context_processors.auth',
                 'django.contrib.messages.context_processors.messages',
                 'news_app.context_processor.categories',
-
+                'social_django.context_processors.backends', # add this
+                'social_django.context_processors.login_redirect', # add this
             ],
         },
     },
 ]
+
+
+SOCIAL_AUTH_FACEBOOK_KEY ="3049263218425186"       # App ID
+SOCIAL_AUTH_FACEBOOK_SECRET = "f9f8996eceba9a5b3db0890c6dfffd67" # App Secret
+SOCIAL_AUTH_FACEBOOK_SCOPE = ['email', 'user_link'] # add this
+SOCIAL_AUTH_FACEBOOK_PROFILE_EXTRA_PARAMS = {       # add this
+  'fields': 'id, name, email, picture.type(large), link'
+}
+SOCIAL_AUTH_FACEBOOK_EXTRA_DATA = [                 # add this
+    ('name', 'name'),
+    ('email', 'email'),
+    ('picture', 'picture'),
+    ('link', 'profile_url'),
+]
+SOCIAL_AUTH_INSTAGRAM_KEY = "2240182219617095"        #Client ID
+SOCIAL_AUTH_INSTAGRAM_SECRET = "b98066952610d70aaba89fdaab34c05c"  #Client SECRET
+SOCIAL_AUTH_INSTAGRAM_EXTRA_DATA = [         ('user', 'user'),
+]
+
+# add this code
+# SOCIAL_AUTH_LINKEDIN_OAUTH2_KEY = YOUR_CLIENT_ID         #Client ID
+# SOCIAL_AUTH_LINKEDIN_OAUTH2_SECRET = YOUR_CLIENT_SECRET  #Client Secret
+# SOCIAL_AUTH_LINKEDIN_OAUTH2_SCOPE = ['r_basicprofile', 'r_emailaddress']
+# SOCIAL_AUTH_LINKEDIN_OAUTH2_FIELD_SELECTORS = ['email-address', 'formatted-name', 'public-profile-url', 'picture-url']
+# SOCIAL_AUTH_LINKEDIN_OAUTH2_EXTRA_DATA = [
+#     ('id', 'id'),
+#     ('formattedName', 'name'),
+#     ('emailAddress', 'email_address'),
+#     ('pictureUrl', 'picture_url'),
+#     ('publicProfileUrl', 'profile_url'),
+# ]
+
 
 WSGI_APPLICATION = 'news.wsgi.application'
 
@@ -150,3 +193,7 @@ LOGIN_REDIRECT_URL = "/"
 AUTH_USER_MODEL = "account.User"
 
 
+LOGIN_URL = 'login'
+LOGIN_REDIRECT_URL = 'home'
+LOGOUT_URL = 'logout'
+LOGOUT_REDIRECT_URL = 'login'

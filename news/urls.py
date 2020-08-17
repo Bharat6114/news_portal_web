@@ -25,6 +25,7 @@ urlpatterns = [
     path("", views.NewsTemplateView.as_view(), name="home"),
     path("news/", include("news_app.urls")),
     path("account/", include("account.urls")),
+    path("social_app/",include("social_app.urls")),
 
 
 ]+ static(settings.STATIC_URL, document_root=settings.STATIC_ROOT)
