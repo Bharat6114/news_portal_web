@@ -35,6 +35,10 @@ class News(models.Model):
     def get_absolute_url(self):
         return reverse("single_news", kwargs={"pk": self.pk, "slug": self.slug})
 
+class Images(models.Model):
+    editor_image = models.ImageField( upload_to="editor",null=True)
+
+    
 
 class Comment(models.Model):
     news = models.ForeignKey(News, on_delete=models.CASCADE)

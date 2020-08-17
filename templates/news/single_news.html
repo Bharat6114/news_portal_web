@@ -15,14 +15,14 @@
           <div class="col-lg-8 single-content">
             
             <p class="mb-5">
-              <img src="images/big_img_1.jpg" alt="Image" class="img-fluid">
+              <img src="{{ detail_news.cover_image.url }}" alt="Image" class="img-fluid">
             </p>  
             <h1 class="mb-4">
               {{ detail_news.title }}
             </h1>
             <div class="post-meta d-flex mb-5">
               <div class="bio-pic mr-3">
-                <img src="images/person_1.jpg" alt="Image" class="img-fluidid">
+                <img src="{{ detail_news.cover_image.url }}" alt="Image" class="img-fluidid">
               </div>
               <div class="vcard">
                 <span class="d-block"><a href="#">{{news.author}}</a> in <a href="#">

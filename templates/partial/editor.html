@@ -2,7 +2,11 @@
       
           <div class="container">
             <div class="half-post-entry d-block d-lg-flex bg-light">
-              <div class="img-bg" style="background-image: url('{{news.cover_image.url}}')"></div>
+           
+              {% if news.image %}
+                 <img src='{{news.cover_image.url}}'>
+              {% endif %}
+              <div class="img-bg" style="background-image: url('{{news_list.0.cover_image.url}}')"></div>
               <div class="contents">
               {% for news in news_list|slice:":1" %}
                 <span class="caption">Editor's Pick</span>
