@@ -32,7 +32,6 @@ class CategoryNewsView(View):
             request, template_name, {"category_news_list": category_news_list, "category": category,"page_obj": page_obj}
         )
     
-    
 
 # class CategoryNewsView(ListView):
 #     model = News
@@ -62,6 +61,7 @@ class NewsTemplateView(TemplateView):
         context["news_list"] = News.objects.all().order_by("-created_at")[:4]
         context["trending_news"] = News.objects.order_by("-count")
         context["category_news_list"] = category_news_list
+        context["popular_news"] = News.objects.order_by("-count")[:4]
         #(context)
         return context
 
