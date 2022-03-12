@@ -9,7 +9,7 @@ verify_ssl = true
 django = "==2.2.2"
 pylint = "==2.5.2"
 black = "==19.10b0"
-pillow = "==7.1.2"
+pillow = "==9.0.1"
 django-crispy-forms= "==1.8.1"
 django-six= "==1.0.4"
 python-dotenv = "==0.10.3"
